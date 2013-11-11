@@ -1,22 +1,21 @@
 %define upstream_name    B-Compiling
-%define upstream_version 0.02
+%define upstream_version 0.04
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:	5
+Release:	1
 
 Summary:    Expose PL_compiling to perl
 License:    GPL+ or Artistic
 Group:      Development/Perl
 Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/B/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:    http://www.cpan.org/modules/by-module/B/B-Compiling-%{upstream_version}.tar.gz
 
 BuildRequires: perl(B)
 BuildRequires: perl(ExtUtils::MakeMaker)
 BuildRequires: perl(Sub::Exporter)
 BuildRequires: perl(XSLoader)
 BuildRequires: perl-devel
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module exposes the perl interpreter's PL_compiling variable to perl.
@@ -33,14 +32,11 @@ This module exposes the perl interpreter's PL_compiling variable to perl.
 %{make} test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
 %clean
-rm -rf %buildroot
 
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
@@ -68,3 +64,4 @@ rm -rf %buildroot
 
 * Sun Aug 16 2009 cpan2dist 0.02-1mdv
 - initial mdv release, generated with cpan2dist
+
